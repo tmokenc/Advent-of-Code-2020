@@ -1,0 +1,29 @@
+# Advent-of-Code-2021
+My solution for the advent of code 2021, written in Rust
+
+## Lessons Learned
+Nothing yet
+
+## Error Handle
+**NOPE!!!** `unwrap()` everything everywhere
+
+## Use
+To run all of the advent of code solutions
+```sh
+cargo run --release
+```
+To run only a specific day (replace {DAY_NUMBER} with the number of that day)
+```sh
+cargo run --release -- {DAY_NUMBER}
+```
+
+#### Note
+Nothing yet
+
+## Remarkable Memories
+Nothing yet
+
+
+## Dependencies
+- **humantime** - to display the running time
+- **owo-colors** - to print colored result in terminal
