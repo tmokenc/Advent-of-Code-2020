@@ -2,6 +2,7 @@ mod day01;
 mod day02;
 mod day03;
 mod day04;
+mod day05;
 
 use humantime::format_duration;
 use owo_colors::OwoColorize as _;
@@ -106,12 +107,13 @@ fn run(day: u8) -> Option<Timing> {
         2 => exec::<day02::PasswordPhilosophy>(),
         3 => exec::<day03::TobogganTrajectory>(),
         4 => exec::<day04::PassportProcessing>(),
+        5 => exec::<day05::BinaryBoarding>(),
         26.. => {
             println!("{day} is not a valid day for AdventOfCode");
             None
         }
         _ => {
-            println!("There is not a solution for day {day} yet");
+            println!("There is no solution for day {day} yet");
             None
         }
     }
