@@ -1,5 +1,8 @@
-# Advent-of-Code-2021
-My solution for the advent of code 2021, written in Rust
+# Advent-of-Code-2020
+My solution for the advent of code 2020, written in Rust
+
+#### My other AoC
+- [2021](https://github.com/tmokenc/Advent-of-Code-2021)
 
 ## Lessons Learned
 Nothing yet
