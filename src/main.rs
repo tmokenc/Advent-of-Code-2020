@@ -127,10 +127,14 @@ fn main() {
     }
 
     let mut timings: [Option<Timing>; 25] = [None; 25];
+    let mut iter = days.into_iter().peekable();
 
-    for day in days {
-        if let Some(timing) = run(day) {
-            timings[day as usize - 1] = Some(timing);
+    while let Some(day) = iter.next() {
+        let timing = run(day);
+        timings[day as usize - 1] = timing;
+
+        if timing.is_some() && iter.peek().is_some() {
+            println!("");
         }
     }
 
