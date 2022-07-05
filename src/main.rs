@@ -6,12 +6,16 @@ mod day04;
 use humantime::format_duration;
 use owo_colors::OwoColorize as _;
 use std::env;
+use std::fmt::Display;
 use std::fs;
 use std::io::Write;
 use std::path::Path;
 use std::time::{Duration, Instant};
 
-pub trait AdventOfCode {
+pub trait AdventOfCode<Output = u64>
+where
+    Output: Display,
+{
     const TITLE: &'static str;
     const DAY: u8;
 
@@ -19,13 +23,8 @@ pub trait AdventOfCode {
     where
         Self: Sized;
 
-    fn part1(&self) -> u64 {
-        0
-    }
-
-    fn part2(&self) -> u64 {
-        0
-    }
+    fn part1(&self) -> Output;
+    fn part2(&self) -> Output;
 }
 
 #[derive(Clone, Copy)]
