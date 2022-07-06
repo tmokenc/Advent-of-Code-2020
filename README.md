@@ -30,3 +30,5 @@ Nothing yet
 ## Dependencies
 - **humantime** - to display the running time
 - **owo-colors** - to print colored result in terminal
+- **log** - to debug code
+- **fern** - driver for the `log` module

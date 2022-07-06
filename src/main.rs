@@ -4,6 +4,7 @@ mod day03;
 mod day04;
 mod day05;
 mod day06;
+mod day07;
 
 use humantime::format_duration;
 use owo_colors::OwoColorize as _;
@@ -110,6 +111,7 @@ fn run(day: u8) -> Option<Timing> {
         4 => exec::<day04::PassportProcessing>(),
         5 => exec::<day05::BinaryBoarding>(),
         6 => exec::<day06::CustomCustoms>(),
+        7 => exec::<day07::HandyHaversacks>(),
         26.. => {
             println!("{day} is not a valid day for AdventOfCode");
             None
@@ -122,6 +124,10 @@ fn run(day: u8) -> Option<Timing> {
 }
 
 fn main() {
+    if env::args().any(|v| v == "-l" || v == "--log") {
+        setup_logger();
+    }
+
     let mut days = env::args()
         .skip(1)
         .filter_map(|v| v.parse::<u8>().ok())
@@ -143,12 +149,18 @@ fn main() {
         }
     }
 
-    if env::args()
-        .find(|v| v == "--benchmark" || v == "-b")
-        .is_some()
-    {
+    if env::args().any(|v| v == "--benchmark" || v == "-b") {
         print_benchmark(timings).unwrap();
     }
+}
+
+fn setup_logger() -> () {
+    fern::Dispatch::new()
+        .format(|out, msg, record| out.finish(format_args!("{} - {}", record.level(), msg)))
+        .level(log::LevelFilter::Debug)
+        .chain(fs::File::create("output.log").unwrap())
+        .apply()
+        .unwrap()
 }
 
 fn display_benchmark_time(time: Duration) -> String {
