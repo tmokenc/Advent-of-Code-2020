@@ -5,6 +5,7 @@ mod day04;
 mod day05;
 mod day06;
 mod day07;
+mod day08;
 
 use humantime::format_duration;
 use owo_colors::OwoColorize as _;
@@ -112,6 +113,7 @@ fn run(day: u8) -> Option<Timing> {
         5 => exec::<day05::BinaryBoarding>(),
         6 => exec::<day06::CustomCustoms>(),
         7 => exec::<day07::HandyHaversacks>(),
+        8 => exec::<day08::HandheldHalting>(),
         26.. => {
             println!("{day} is not a valid day for AdventOfCode");
             None
