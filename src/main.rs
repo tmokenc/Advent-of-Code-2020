@@ -6,6 +6,8 @@ mod day05;
 mod day06;
 mod day07;
 mod day08;
+mod day09;
+mod day17;
 
 use humantime::format_duration;
 use owo_colors::OwoColorize as _;
@@ -106,14 +108,16 @@ fn exec<AoC: AdventOfCode + 'static>() -> Option<Timing> {
 
 fn run(day: u8) -> Option<Timing> {
     match day {
-        1 => exec::<day01::ReportPair>(),
-        2 => exec::<day02::PasswordPhilosophy>(),
-        3 => exec::<day03::TobogganTrajectory>(),
-        4 => exec::<day04::PassportProcessing>(),
-        5 => exec::<day05::BinaryBoarding>(),
-        6 => exec::<day06::CustomCustoms>(),
-        7 => exec::<day07::HandyHaversacks>(),
-        8 => exec::<day08::HandheldHalting>(),
+        01 => exec::<day01::ReportPair>(),
+        02 => exec::<day02::PasswordPhilosophy>(),
+        03 => exec::<day03::TobogganTrajectory>(),
+        04 => exec::<day04::PassportProcessing>(),
+        05 => exec::<day05::BinaryBoarding>(),
+        06 => exec::<day06::CustomCustoms>(),
+        07 => exec::<day07::HandyHaversacks>(),
+        08 => exec::<day08::HandheldHalting>(),
+        09 => exec::<day09::EncodingError>(),
+        17 => exec::<day17::ConwayCubes>(),
         26.. => {
             println!("{day} is not a valid day for AdventOfCode");
             None
