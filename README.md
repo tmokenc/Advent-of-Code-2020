@@ -27,7 +27,8 @@ Nothing yet
 
 ## Remarkable Memories
 - **Day 7** - Ahh yes, the first recursion of this year challenge, I was able to implement a non-recursive function in the first part, but not the second part
-- **DAY 10** - spent an entire day for the part 2
+- **Day 10** - spent an entire day for the part 2
+- **Day 12** - I really enjoy this one because it feels like making a game logic
 
 ## Dependencies
 - **humantime** - to display the running time
