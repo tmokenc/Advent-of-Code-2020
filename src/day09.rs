@@ -7,14 +7,9 @@ impl crate::AdventOfCode for EncodingError {
     const DAY: u8 = 9;
 
     fn new(input: &str) -> Option<Self> {
-        let mut list = Vec::new();
-
-        for line in input.lines() {
-            let num = line.parse::<u64>().ok()?;
-            list.push(num);
-        }
-
-        Some(Self { list })
+        Some(Self {
+            list: crate::lines_to_vec::<u64>(input)?,
+        })
     }
 
     fn part1(&self) -> u64 {

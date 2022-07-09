@@ -7,7 +7,11 @@ mod day06;
 mod day07;
 mod day08;
 mod day09;
+mod day10;
 mod day17;
+
+pub mod utils;
+pub use utils::*;
 
 use humantime::format_duration;
 use owo_colors::OwoColorize as _;
@@ -117,6 +121,7 @@ fn run(day: u8) -> Option<Timing> {
         07 => exec::<day07::HandyHaversacks>(),
         08 => exec::<day08::HandheldHalting>(),
         09 => exec::<day09::EncodingError>(),
+        10 => exec::<day10::AdapterArray>(),
         17 => exec::<day17::ConwayCubes>(),
         26.. => {
             println!("{day} is not a valid day for AdventOfCode");

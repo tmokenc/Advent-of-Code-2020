@@ -21,10 +21,11 @@ cargo run --release -- {DAY_NUMBER}
 ```
 
 #### Note
+- **Day 9** - Does not have a example run, because its input is different from the real input
 Nothing yet
 
 ## Remarkable Memories
-Nothing yet
+- **Day 7** - Ahh yes, the first recursion of this year challenge, I was able to implement a non-recursive function in the first part, but not the second part
 
 
 ## Dependencies

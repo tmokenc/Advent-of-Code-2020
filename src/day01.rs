@@ -9,8 +9,9 @@ impl AdventOfCode for ReportPair {
     const DAY: u8 = 1;
 
     fn new(input: &str) -> Option<Self> {
-        let list = input.lines().map(|s| s.parse::<u16>().unwrap()).collect();
-        Some(Self { list })
+        Some(Self {
+            list: crate::lines_to_vec::<u16>(input)?,
+        })
     }
 
     fn part1(&self) -> u64 {
