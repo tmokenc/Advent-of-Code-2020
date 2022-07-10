@@ -10,6 +10,7 @@ mod day09;
 mod day10;
 mod day11;
 mod day12;
+mod day13;
 mod day17;
 
 pub mod utils;
@@ -126,6 +127,7 @@ fn run(day: u8) -> Option<Timing> {
         10 => exec::<day10::AdapterArray>(),
         11 => exec::<day11::SeatingSystem>(),
         12 => exec::<day12::RainRisk>(),
+        13 => exec::<day13::ShuttleSearch>(),
         17 => exec::<day17::ConwayCubes>(),
         26.. => {
             println!("{day} is not a valid day for AdventOfCode");
