@@ -11,6 +11,7 @@ mod day10;
 mod day11;
 mod day12;
 mod day13;
+mod day14;
 mod day17;
 
 pub mod utils;
@@ -56,10 +57,10 @@ fn time<T>(f: impl Fn() -> T) -> (T, Duration) {
     (res, duration)
 }
 
-fn exec_once<AoC: AdventOfCode + 'static>(input: String) -> Option<Timing> {
+fn exec_once<AoC: AdventOfCode + 'static>(input: String, input2: Option<String>) -> Option<Timing> {
     let (f, parse_time) = time(|| AoC::new(&input));
 
-    let f = match f {
+    let mut f = match f {
         Some(f) => f,
         None => {
             println!("Cannot parse the input");
@@ -79,6 +80,10 @@ fn exec_once<AoC: AdventOfCode + 'static>(input: String) -> Option<Timing> {
         format_duration(part1_time).cyan(),
         format_duration(part1_time + parse_time).bright_cyan(),
     );
+
+    if let Some(p2) = input2 {
+        f = AoC::new(&p2)?;
+    }
 
     let (res, part2_time) = time(|| f.part2());
     println!(
@@ -101,16 +106,19 @@ fn exec<AoC: AdventOfCode + 'static>() -> Option<Timing> {
     println!("{}", title.bold());
 
     let input_name = format!("day{:02}.txt", AoC::DAY);
+    let part2_name = format!("day{:02}_2.txt", AoC::DAY);
     let example_path = Path::new("./example_input/").join(&input_name);
+    let example_path2 = Path::new("./example_input/").join(part2_name);
     let input_path = Path::new("./input/").join(&input_name);
 
     println!("Example");
     let example = fs::read_to_string(example_path).ok()?;
-    exec_once::<AoC>(example);
+    let example_part2 = fs::read_to_string(example_path2).ok();
+    exec_once::<AoC>(example, example_part2);
 
     println!("Solution");
     let input = fs::read_to_string(input_path).ok()?;
-    exec_once::<AoC>(input)
+    exec_once::<AoC>(input, None)
 }
 
 fn run(day: u8) -> Option<Timing> {
@@ -128,6 +136,7 @@ fn run(day: u8) -> Option<Timing> {
         11 => exec::<day11::SeatingSystem>(),
         12 => exec::<day12::RainRisk>(),
         13 => exec::<day13::ShuttleSearch>(),
+        14 => exec::<day14::DockingData>(),
         17 => exec::<day17::ConwayCubes>(),
         26.. => {
             println!("{day} is not a valid day for AdventOfCode");
