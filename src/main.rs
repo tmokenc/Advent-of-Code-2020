@@ -12,6 +12,7 @@ mod day11;
 mod day12;
 mod day13;
 mod day14;
+mod day15;
 mod day17;
 
 pub mod utils;
@@ -58,7 +59,7 @@ fn time<T>(f: impl Fn() -> T) -> (T, Duration) {
 }
 
 fn exec_once<AoC: AdventOfCode + 'static>(input: String, input2: Option<String>) -> Option<Timing> {
-    let (f, parse_time) = time(|| AoC::new(&input));
+    let (f, parse_time) = time(|| AoC::new(input.trim()));
 
     let mut f = match f {
         Some(f) => f,
@@ -82,7 +83,7 @@ fn exec_once<AoC: AdventOfCode + 'static>(input: String, input2: Option<String>)
     );
 
     if let Some(p2) = input2 {
-        f = AoC::new(&p2)?;
+        f = AoC::new(p2.trim())?;
     }
 
     let (res, part2_time) = time(|| f.part2());
@@ -137,6 +138,7 @@ fn run(day: u8) -> Option<Timing> {
         12 => exec::<day12::RainRisk>(),
         13 => exec::<day13::ShuttleSearch>(),
         14 => exec::<day14::DockingData>(),
+        15 => exec::<day15::RambunctiousRecitation>(),
         17 => exec::<day17::ConwayCubes>(),
         26.. => {
             println!("{day} is not a valid day for AdventOfCode");
