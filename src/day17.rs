@@ -146,3 +146,23 @@ impl crate::AdventOfCode for ConwayCubes {
         cubes.active_cubes.len() as u64
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let input = include_str!("../example_input/day17.txt");
+        let res = ConwayCubes::new_unwrap(input);
+        assert_eq!(res.part1(), 112);
+    }
+
+    #[test]
+    fn part2() {
+        let input = include_str!("../example_input/day17.txt");
+        let res = ConwayCubes::new_unwrap(input);
+        assert_eq!(res.part2(), 848);
+    }
+}

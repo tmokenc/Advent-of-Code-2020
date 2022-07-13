@@ -82,3 +82,18 @@ impl crate::AdventOfCode for BinaryBoarding {
         0
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let input = include_str!("../example_input/day05.txt");
+        let res = BinaryBoarding::new_unwrap(input);
+        assert_eq!(res.part1(), 820);
+    }
+
+    // part 2 doesn't have an example for it
+}

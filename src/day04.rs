@@ -140,3 +140,30 @@ impl crate::AdventOfCode for PassportProcessing {
         self.passports.iter().filter(|v| v.is_valid()).count() as u64
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let input = include_str!("../example_input/day04.txt");
+        let res = PassportProcessing::new_unwrap(input);
+        assert_eq!(res.part1(), 2);
+    }
+
+    #[test]
+    fn part2_valid() {
+        let input = include_str!("../example_input/day04_valid.txt");
+        let res = PassportProcessing::new_unwrap(input);
+        assert_eq!(res.part2(), 4);
+    }
+
+    #[test]
+    fn part2_invalid() {
+        let input = include_str!("../example_input/day04_invalid.txt");
+        let res = PassportProcessing::new_unwrap(input);
+        assert_eq!(res.part2(), 0);
+    }
+}

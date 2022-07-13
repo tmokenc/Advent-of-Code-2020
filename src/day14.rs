@@ -146,3 +146,22 @@ impl crate::AdventOfCode for DockingData {
         data.values().copied().sum()
     }
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let input = include_str!("../example_input/day14.txt");
+        let res = DockingData::new_unwrap(input);
+        assert_eq!(res.part1(), 165);
+    }
+
+    #[test]
+    fn part2() {
+        let input = include_str!("../example_input/day14_2.txt");
+        let res = DockingData::new_unwrap(input);
+        assert_eq!(res.part2(), 208);
+    }
+}

@@ -83,3 +83,30 @@ impl crate::AdventOfCode for HandyHaversacks {
         self.get_bag_size("shiny gold")
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let input = include_str!("../example_input/day07.txt");
+        let res = HandyHaversacks::new_unwrap(input);
+        assert_eq!(res.part1(), 4);
+    }
+
+    #[test]
+    fn part2_1() {
+        let input = include_str!("../example_input/day07.txt");
+        let res = HandyHaversacks::new_unwrap(input);
+        assert_eq!(res.part2(), 32);
+    }
+
+    #[test]
+    fn part2_2() {
+        let input = include_str!("../example_input/day07_2.txt");
+        let res = HandyHaversacks::new_unwrap(input);
+        assert_eq!(res.part2(), 126);
+    }
+}

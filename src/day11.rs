@@ -180,3 +180,23 @@ impl crate::AdventOfCode for SeatingSystem {
         seats.count_occupied()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let input = include_str!("../example_input/day11.txt");
+        let res = SeatingSystem::new_unwrap(input);
+        assert_eq!(res.part1(), 37);
+    }
+
+    #[test]
+    fn part2() {
+        let input = include_str!("../example_input/day11.txt");
+        let res = SeatingSystem::new_unwrap(input);
+        assert_eq!(res.part2(), 26);
+    }
+}

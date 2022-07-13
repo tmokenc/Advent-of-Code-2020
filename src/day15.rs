@@ -40,3 +40,58 @@ impl crate::AdventOfCode for RambunctiousRecitation {
         self.memory_game(30000000)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn memory_game_1() {
+        let input = "0,3,6";
+        let res = RambunctiousRecitation::new_unwrap(input);
+        assert_eq!(res.part1(), 436);
+    }
+
+    #[test]
+    fn memory_game_2() {
+        let input = "1,3,2";
+        let res = RambunctiousRecitation::new_unwrap(input);
+        assert_eq!(res.part1(), 1);
+    }
+
+    #[test]
+    fn memory_game_3() {
+        let input = "2,1,3";
+        let res = RambunctiousRecitation::new_unwrap(input);
+        assert_eq!(res.part1(), 10);
+    }
+
+    #[test]
+    fn memory_game_4() {
+        let input = "1,2,3";
+        let res = RambunctiousRecitation::new_unwrap(input);
+        assert_eq!(res.part1(), 27);
+    }
+
+    #[test]
+    fn memory_game_5() {
+        let input = "2,3,1";
+        let res = RambunctiousRecitation::new_unwrap(input);
+        assert_eq!(res.part1(), 78);
+    }
+
+    #[test]
+    fn memory_game_6() {
+        let input = "3,2,1";
+        let res = RambunctiousRecitation::new_unwrap(input);
+        assert_eq!(res.part1(), 438);
+    }
+
+    #[test]
+    fn memory_game_7() {
+        let input = "3,1,2";
+        let res = RambunctiousRecitation::new_unwrap(input);
+        assert_eq!(res.part1(), 1836);
+    }
+}

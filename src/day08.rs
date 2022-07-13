@@ -109,3 +109,23 @@ impl crate::AdventOfCode for HandheldHalting {
         0
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let input = include_str!("../example_input/day08.txt");
+        let res = HandheldHalting::new_unwrap(input);
+        assert_eq!(res.part1(), 5);
+    }
+
+    #[test]
+    fn part2() {
+        let input = include_str!("../example_input/day08.txt");
+        let res = HandheldHalting::new_unwrap(input);
+        assert_eq!(res.part2(), 8);
+    }
+}

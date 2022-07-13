@@ -131,3 +131,18 @@ impl crate::AdventOfCode for TicketTranslation {
             .product()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let input = include_str!("../example_input/day16.txt");
+        let res = TicketTranslation::new_unwrap(input);
+        assert_eq!(res.part1(), 71);
+    }
+
+    // also no example for the part 2
+}

@@ -15,6 +15,7 @@ mod day14;
 mod day15;
 mod day16;
 mod day17;
+mod day18;
 
 pub mod utils;
 pub use utils::*;
@@ -41,6 +42,19 @@ where
 
     fn part1(&self) -> Output;
     fn part2(&self) -> Output;
+    fn new_unwrap(input: &str) -> Self
+    where
+        Self: Sized,
+    {
+        match Self::new(input) {
+            Some(res) => res,
+            None => panic!(
+                "Cannot parse the input of `{}` (day {})",
+                Self::TITLE,
+                Self::DAY
+            ),
+        }
+    }
 }
 
 #[derive(Clone, Copy)]
@@ -59,10 +73,10 @@ fn time<T>(f: impl Fn() -> T) -> (T, Duration) {
     (res, duration)
 }
 
-fn exec_once<AoC: AdventOfCode + 'static>(input: String, input2: Option<String>) -> Option<Timing> {
+fn exec_once<AoC: AdventOfCode + 'static>(input: String) -> Option<Timing> {
     let (f, parse_time) = time(|| AoC::new(input.trim()));
 
-    let mut f = match f {
+    let f = match f {
         Some(f) => f,
         None => {
             println!("Cannot parse the input");
@@ -82,10 +96,6 @@ fn exec_once<AoC: AdventOfCode + 'static>(input: String, input2: Option<String>)
         format_duration(part1_time).cyan(),
         format_duration(part1_time + parse_time).bright_cyan(),
     );
-
-    if let Some(p2) = input2 {
-        f = AoC::new(p2.trim())?;
-    }
 
     let (res, part2_time) = time(|| f.part2());
     println!(
@@ -108,19 +118,11 @@ fn exec<AoC: AdventOfCode + 'static>() -> Option<Timing> {
     println!("{}", title.bold());
 
     let input_name = format!("day{:02}.txt", AoC::DAY);
-    let part2_name = format!("day{:02}_2.txt", AoC::DAY);
-    let example_path = Path::new("./example_input/").join(&input_name);
-    let example_path2 = Path::new("./example_input/").join(part2_name);
     let input_path = Path::new("./input/").join(&input_name);
 
-    println!("Example");
-    let example = fs::read_to_string(example_path).ok()?;
-    let example_part2 = fs::read_to_string(example_path2).ok();
-    exec_once::<AoC>(example, example_part2);
-
-    println!("Solution");
+    // println!("Solution");
     let input = fs::read_to_string(input_path).ok()?;
-    exec_once::<AoC>(input, None)
+    exec_once::<AoC>(input)
 }
 
 fn run(day: u8) -> Option<Timing> {
@@ -142,6 +144,7 @@ fn run(day: u8) -> Option<Timing> {
         15 => exec::<day15::RambunctiousRecitation>(),
         16 => exec::<day16::TicketTranslation>(),
         17 => exec::<day17::ConwayCubes>(),
+        18 => exec::<day18::OperationOrder>(),
         26.. => {
             println!("{day} is not a valid day for AdventOfCode");
             None

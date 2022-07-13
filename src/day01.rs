@@ -1,10 +1,8 @@
-use crate::AdventOfCode;
-
 pub struct ReportPair {
     list: Vec<u16>,
 }
 
-impl AdventOfCode for ReportPair {
+impl crate::AdventOfCode for ReportPair {
     const TITLE: &'static str = "Report Pair";
     const DAY: u8 = 1;
 
@@ -38,5 +36,23 @@ impl AdventOfCode for ReportPair {
         }
 
         0
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let res = ReportPair::new_unwrap(include_str!("../example_input/day01.txt"));
+        assert_eq!(res.part1(), 514579);
+    }
+
+    #[test]
+    fn part2() {
+        let res = ReportPair::new_unwrap(include_str!("../example_input/day01.txt"));
+        assert_eq!(res.part2(), 241861950);
     }
 }

@@ -68,3 +68,23 @@ impl crate::AdventOfCode for TobogganTrajectory {
         a * b * c * d * e
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let input = include_str!("../example_input/day03.txt");
+        let res = TobogganTrajectory::new_unwrap(input);
+        assert_eq!(res.part1(), 7);
+    }
+
+    #[test]
+    fn part2() {
+        let input = include_str!("../example_input/day03.txt");
+        let res = TobogganTrajectory::new_unwrap(input);
+        assert_eq!(res.part2(), 336);
+    }
+}

@@ -60,3 +60,23 @@ impl crate::AdventOfCode for CustomCustoms {
         self.groups.iter().map(|v| count_same_answers(v)).sum()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let input = include_str!("../example_input/day06.txt");
+        let res = CustomCustoms::new_unwrap(input);
+        assert_eq!(res.part1(), 11);
+    }
+
+    #[test]
+    fn part2() {
+        let input = include_str!("../example_input/day06.txt");
+        let res = CustomCustoms::new_unwrap(input);
+        assert_eq!(res.part2(), 6);
+    }
+}

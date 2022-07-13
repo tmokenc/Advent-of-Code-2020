@@ -34,11 +34,39 @@ impl crate::AdventOfCode for AdapterArray {
         ways.insert(0, 1);
 
         for v in self.adapters[1..].iter().copied() {
-            *ways.entry(v).or_insert(0) += ways.get(&(v - 1)).unwrap_or(&0)
-                + ways.get(&(v - 2)).unwrap_or(&0)
-                + ways.get(&(v - 3)).unwrap_or(&0);
+            let mut num = ways.get(&(v - 1)).copied().unwrap_or(0);
+
+            if v > 1 {
+                num += ways.get(&(v - 2)).unwrap_or(&0);
+            }
+
+            if v > 2 {
+                num += ways.get(&(v - 3)).unwrap_or(&0);
+            }
+
+            *ways.entry(v).or_insert(0) += num;
         }
 
         *ways.get(self.adapters.last().unwrap()).unwrap()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let input = include_str!("../example_input/day10.txt");
+        let res = AdapterArray::new_unwrap(input);
+        assert_eq!(res.part1(), 220);
+    }
+
+    #[test]
+    fn part2() {
+        let input = include_str!("../example_input/day10.txt");
+        let res = AdapterArray::new_unwrap(input);
+        assert_eq!(res.part2(), 19208);
     }
 }

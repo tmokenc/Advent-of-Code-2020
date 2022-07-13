@@ -108,3 +108,23 @@ impl crate::AdventOfCode for RainRisk {
         manhattan_distance(location)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let input = include_str!("../example_input/day12.txt");
+        let res = RainRisk::new_unwrap(input);
+        assert_eq!(res.part1(), 25);
+    }
+
+    #[test]
+    fn part2() {
+        let input = include_str!("../example_input/day12.txt");
+        let res = RainRisk::new_unwrap(input);
+        assert_eq!(res.part2(), 286);
+    }
+}

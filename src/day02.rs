@@ -1,5 +1,3 @@
-use crate::AdventOfCode;
-
 struct CorupttedPassword {
     password: String,
     char_hint: char,
@@ -11,7 +9,7 @@ pub struct PasswordPhilosophy {
     list: Vec<CorupttedPassword>,
 }
 
-impl AdventOfCode for PasswordPhilosophy {
+impl crate::AdventOfCode for PasswordPhilosophy {
     const TITLE: &'static str = "Password Philosophy";
     const DAY: u8 = 2;
 
@@ -63,5 +61,25 @@ impl AdventOfCode for PasswordPhilosophy {
                 (a != b) && (a == data.char_hint || b == data.char_hint)
             })
             .count() as u64
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let input = include_str!("../example_input/day02.txt");
+        let res = PasswordPhilosophy::new_unwrap(input);
+        assert_eq!(res.part1(), 2);
+    }
+
+    #[test]
+    fn part2() {
+        let input = include_str!("../example_input/day02.txt");
+        let res = PasswordPhilosophy::new_unwrap(input);
+        assert_eq!(res.part2(), 1);
     }
 }

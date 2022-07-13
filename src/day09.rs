@@ -1,5 +1,6 @@
 pub struct EncodingError {
     list: Vec<u64>,
+    preamble: usize,
 }
 
 impl crate::AdventOfCode for EncodingError {
@@ -9,22 +10,22 @@ impl crate::AdventOfCode for EncodingError {
     fn new(input: &str) -> Option<Self> {
         Some(Self {
             list: crate::lines_to_vec::<u64>(input)?,
+            preamble: 25,
         })
     }
 
     fn part1(&self) -> u64 {
-        const PREAMBLE: usize = 25;
-        let mut idx = PREAMBLE;
+        let mut idx = self.preamble;
 
         while idx < self.list.len() {
             let num = self.list[idx];
-            let preamble = &self.list[idx - PREAMBLE..idx];
+            let preamble = &self.list[idx - self.preamble..idx];
 
             let has_some = preamble
                 .iter()
-                .take(PREAMBLE - 1)
+                .take(self.preamble - 1)
                 .enumerate()
-                .flat_map(|(i, v)| preamble[i + 1..].into_iter().zip(std::iter::repeat(v)))
+                .flat_map(|(i, v)| preamble[i + 1..].into_iter().map(move |x| (x, v)))
                 .any(|(v, x)| v + x == num);
 
             if !has_some {
@@ -77,5 +78,27 @@ impl crate::AdventOfCode for EncodingError {
         }
 
         min + max
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::*;
+
+    #[test]
+    fn part1() {
+        let input = include_str!("../example_input/day09.txt");
+        let mut res = EncodingError::new_unwrap(input);
+        res.preamble = 5;
+        assert_eq!(res.part1(), 127);
+    }
+
+    #[test]
+    fn part2() {
+        let input = include_str!("../example_input/day09.txt");
+        let mut res = EncodingError::new_unwrap(input);
+        res.preamble = 5;
+        assert_eq!(res.part2(), 62);
     }
 }
