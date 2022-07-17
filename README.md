@@ -31,6 +31,7 @@ Nothing yet
 - **Day 10** - spent an entire day for the part 2
 - **Day 12** - I really enjoy this one because it feels like making a game logic
 - **Day 13** - I brute forced the part 2 and ended up waiting 1h34m for the answer, then googled it and found out the [Chinese remainder theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Computation)
+- **Day 18** - T spent a stupid amount of time to solve this easy puzzle because I forgot to add the last number...
 
 ## Dependencies
 - **humantime** - to display the running time
