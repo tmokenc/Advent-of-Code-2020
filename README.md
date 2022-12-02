@@ -3,6 +3,7 @@ My solution for the advent of code 2020, written in Rust
 
 #### My other AoC
 - [2021](https://github.com/tmokenc/Advent-of-Code-2021)
+- [2022](https://github.com/tmokenc/Advent-of-Code-2022)
 
 ## Lessons Learned
 - **Day 10 part 2**: [Number of k-combinations for all k](https://en.wikipedia.org/wiki/Combination#Number_of_k-?9!combinations_for_all_k), even tho I didn't use it in my solution, but it's nice to know
